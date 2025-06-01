@@ -1,0 +1,12 @@
+github.com/KutoUI/Icons v0.0.0-20250526195613-5b42e4f5c3f4 h1:0/mh1+ioqzrGFjuVuAPPmyo+vc3s8TBVwd5POKLsmtE=
+github.com/KutoUI/Icons v0.0.0-20250526195613-5b42e4f5c3f4/go.mod h1:iUuk5hQdmi/ExgKj6xft8z3hjCRGer1+yyZTLAf2yL4=
+github.com/KutoUI/UI v0.0.0-20250420014513-10948465a704 h1:OQYs2qCp3somjXHGiqB+fN5RL99hEKds0fZ4NJD54M0=
+github.com/KutoUI/UI v0.0.0-20250420014513-10948465a704/go.mod h1:+1+LX/iC/5+QDqSAJKyHXgEBPYTQbwLjT1tsvX1A6u4=
+github.com/a-h/templ v0.3.865 h1:nYn5EWm9EiXaDgWcMQaKiKvrydqgxDUtT1+4zU2C43A=
+github.com/a-h/templ v0.3.865/go.mod h1:oLBbZVQ6//Q6zpvSMPTuBK0F3qOtBdFBcGRspcT+VNQ=
+github.com/go-chi/chi/v5 v5.2.1 h1:KOIHODQj58PmL80G2Eak4WdvUzjSJSm0vG72crDCqb8=
+github.com/go-chi/chi/v5 v5.2.1/go.mod h1:L2yAIGWB3H+phAw1NxKwWM+7eUH/lU8pOMm5hHcoops=
+github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
+github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+github.com/yuin/goldmark v1.7.12 h1:YwGP/rrea2/CnCtUHgjuolG/PnMxdQtPMO5PvaE2/nY=
+github.com/yuin/goldmark v1.7.12/go.mod h1:ip/1k0VRfGynBgxOz0yCqHrbZXhcjxyuS66Brc7iBKg=

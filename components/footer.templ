@@ -1,0 +1,31 @@
+package components
+
+templ Footer() {
+    <style>
+        footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            background-color: var(--second-background-color);
+
+            p {
+                padding-bottom: 2rem;
+                text-align: center;
+
+                strong {
+                    font-weight: 700;
+                }
+
+                a {
+                    color: var(--color);
+                    text-decoration: none;
+                }
+            }
+        }
+    </style>
+    <footer>
+        <p><strong>SkinsDB</strong> by <a href="https://terraqueststudios.net">TerraQuest Studios</a></p>
+    </footer>
+}

@@ -1,0 +1,34 @@
+package pages
+
+import (
+    //"fmt"
+
+    "github.com/TerraQuest-Studios/skinsdb-go/templates"
+    "github.com/TerraQuest-Studios/skinsdb-go/skins"
+	"github.com/TerraQuest-Studios/skinsdb-go/components"
+)
+
+templ indexContent() {
+    <style>
+        .skin_wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+    </style>
+    <div class="skin_wrapper">
+        for _, skin := range skins.GetSkinData() {
+            @components.SkinCard(skin)
+        }
+    </div>
+}
+
+templ Index() {
+    @templates.SkinsdbFull(
+        "Home",
+        templ.Raw("<style></style>"),
+        indexContent(),
+    )
+}

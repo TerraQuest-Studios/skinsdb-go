@@ -1,0 +1,54 @@
+package pages
+
+import (
+    "strconv"
+
+    "github.com/KutoUI/Icons"
+
+    "github.com/TerraQuest-Studios/skinsdb-go/templates"
+)
+
+templ errorStyle() {
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            section {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+        }
+    </style>
+}
+
+templ errorContent(httpCode int) {
+    <section>
+        @icons.Shirt(icons.IconOptions{
+            Size: 48,
+            StrokeWidth: 2,
+        })
+        <div>
+            <h1>HTTP Error: {strconv.Itoa(httpCode)}</h1>
+            <p>Click <a href="/">here</a> to return to the home page.</p>
+        </div>
+    </section>
+}
+
+templ Error(httpCode int) {
+    @templates.SkinsdbMinimal(
+        "Error " + strconv.Itoa(httpCode),
+        errorStyle(),
+        errorContent(httpCode),
+    )
+}

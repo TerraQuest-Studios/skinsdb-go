@@ -1,0 +1,47 @@
+package pages
+
+import (
+    "log"
+    "strings"
+
+    "github.com/TerraQuest-Studios/skinsdb-go/templates"
+    "github.com/TerraQuest-Studios/skinsdb-go/help"
+)
+
+templ helpContent() {
+    {{
+        dirEntries, err := help.Files.ReadDir(".")
+        //TODO: handle error more gracefully
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var itemString string = ""
+        for _, item := range dirEntries {
+            var niceName = strings.Replace(item.Name(), ".md", "", -1)
+            itemString += "<li><a href=\"/help/" + niceName + "\">" + niceName + "</a></li>"
+        }
+    }}
+
+    <style>
+        ul {
+            list-style-type: disc;
+            padding-left: 1rem;
+
+            li a {
+                color: var(--color);
+            }
+        }
+    </style>
+    <ul>
+        @templ.Raw(itemString)
+    </ul>
+}
+
+templ Help() {
+    @templates.SkinsdbFull(
+        "Help",
+        templ.Raw("<style></style>"),
+        helpContent(),
+    )
+}

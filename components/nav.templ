@@ -1,0 +1,50 @@
+package components
+
+import (
+    "github.com/KutoUI/UI/components"
+    "github.com/KutoUI/Icons"
+)
+
+templ navBrand() {
+    <style>
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+
+            color: var(--color);
+        }
+    </style>
+    <a
+        class="nav-brand"
+        href="/"
+    >
+        @icons.Shirt(icons.IconOptions{
+            Size: 24,
+            StrokeWidth: 2,
+        })
+        <span>SkinsDB</span>
+    </a>
+}
+
+templ Nav() {
+    <style>
+        nav {
+            justify-content: space-between;
+        }
+    </style>
+    @components.Navbar(components.NavbarArgs{
+        Brand: navBrand(),
+        Links: []components.NavbarItem{
+            components.NavbarLink{
+                Text: "API Reference",
+                Href: "/help/api",
+            },
+            components.NavbarLink{
+                Text: "API",
+                Href: "/api/v1/content?client=web",
+            },
+        },
+    })
+}

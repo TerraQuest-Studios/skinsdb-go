@@ -1,0 +1,45 @@
+package components
+
+import (
+    "github.com/TerraQuest-Studios/skinsdb-go/skins"
+)
+
+var skinCardStyleHandle = templ.NewOnceHandle()
+
+templ skinCardStyle() {
+    <style>
+        .skin_card {
+            display: flex;
+            gap: 2rem;
+            max-width: 20rem;
+            width: 20rem;
+            align-items: center;
+            background-color: var(--second-background-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+
+            img {
+                align-self: center;
+            }
+
+            p {
+                word-break: break-all;
+            }
+        }
+    </style>
+}
+
+templ SkinCard(skin skins.SkinData) {
+    @skinCardStyleHandle.Once() {
+        @skinCardStyle()
+    }
+    <div class="skin_card">
+        <img loading="lazy" src={skin.Url}>
+        <div>
+            <p>ID: {skin.Id}</p>
+            <p>Name: {skin.Name}</p>
+            <p>Author: {skin.Author}</p>
+            <p>License: {skin.License}</p>
+        </div>
+    </div>
+}

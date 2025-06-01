@@ -1,0 +1,14 @@
+package templates
+
+import (
+    "github.com/KutoUI/UI/style"
+)
+
+templ minimalHead(head templ.Component) {
+    @templ.Raw("<style>" + style.GetSharedStyle() + "</style>")
+    @head
+}
+
+templ SkinsdbMinimal(title string, head templ.Component, body templ.Component) {
+    @Basic(title + " | Skinsdb", minimalHead(head), body)
+}

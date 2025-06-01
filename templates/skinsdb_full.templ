@@ -1,0 +1,48 @@
+package templates
+
+import (
+    "github.com/TerraQuest-Studios/skinsdb-go/components"
+)
+
+templ headContent(head templ.Component) {
+    <style>
+        :root {
+            --second-background-color: color-mix(in srgb, var(--background-color) 100%, var(--color) 10%)
+        }
+
+        nav, main {
+            margin: 0 auto;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        nav {
+            padding-bottom: 1rem;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100dvh;
+
+            main {
+                flex-grow: 1;
+            }
+        }
+    </style>
+    @head
+}
+
+templ bodyContent(body templ.Component) {
+    <div>
+        @components.Nav()
+    </div>
+    <main>
+        @body
+    </main>
+    @components.Footer()
+}
+
+templ SkinsdbFull(title string, head templ.Component, body templ.Component) {
+    @SkinsdbMinimal(title, headContent(head), bodyContent(body))
+}

@@ -1,0 +1,81 @@
+package pages
+
+import (
+    "log"
+
+    "bytes"
+    "github.com/yuin/goldmark"
+    "github.com/yuin/goldmark/extension"
+    //"github.com/yuin/goldmark/parser"
+    //"github.com/yuin/goldmark/renderer/html"
+
+    "github.com/TerraQuest-Studios/skinsdb-go/templates"
+    "github.com/TerraQuest-Studios/skinsdb-go/help"
+)
+
+templ helpItemContent(fileName string) {
+    {{
+        //TODO: handle panic and logs more gracefully
+        
+        fileContent, err := help.Files.ReadFile(fileName + ".md")
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        md := goldmark.New(
+            goldmark.WithExtensions(
+                extension.GFM,
+            ),
+        )
+
+        var buf bytes.Buffer
+        if err := md.Convert(fileContent, &buf); err != nil {
+            panic(err)
+        }
+    }}
+
+    //TODO: improve? markdown rendering and styling
+
+    <style>
+        .rendered-markdown-content {
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+            h4 {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+            h5, h6 {
+                font-size: 0.875rem;
+                margin-bottom: 0.25rem;
+            }
+            pre {
+                background-color: var(--second-background-color);
+                padding: 1rem;
+            }
+            p {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+    <div class="rendered-markdown-content">
+        @templ.Raw(buf.String())
+    </div>
+}
+
+templ HelpItem(fileName string) {
+    @templates.SkinsdbFull(
+        "Home",
+        templ.Raw("<style></style>"),
+        helpItemContent(fileName),
+    )
+}
