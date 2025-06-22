@@ -9,8 +9,6 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"log"
-
 	"bytes"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -47,7 +45,7 @@ func helpItemContent(fileName string) templ.Component {
 
 		fileContent, err := help.Files.ReadFile(fileName + ".md")
 		if err != nil {
-			log.Fatal(err)
+			panic(err)
 		}
 
 		md := goldmark.New(

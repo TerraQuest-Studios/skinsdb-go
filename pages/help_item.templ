@@ -1,8 +1,6 @@
 package pages
 
 import (
-    "log"
-
     "bytes"
     "github.com/yuin/goldmark"
     "github.com/yuin/goldmark/extension"
@@ -19,7 +17,7 @@ templ helpItemContent(fileName string) {
         
         fileContent, err := help.Files.ReadFile(fileName + ".md")
         if err != nil {
-            log.Fatal(err)
+            panic(err)
         }
 
         md := goldmark.New(

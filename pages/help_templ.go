@@ -9,7 +9,6 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"log"
 	"strings"
 
 	"github.com/TerraQuest-Studios/skinsdb-go/help"
@@ -41,7 +40,7 @@ func helpContent() templ.Component {
 		dirEntries, err := help.Files.ReadDir(".")
 		//TODO: handle error more gracefully
 		if err != nil {
-			log.Fatal(err)
+			panic(err)
 		}
 
 		var itemString string = ""
