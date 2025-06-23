@@ -17,6 +17,7 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+	r.Use(middleware.RedirectSlashes)
 
 	r.NotFound(templ.Handler(pages.Error(404), templ.WithStatus(http.StatusNotFound)).ServeHTTP)
 	r.MethodNotAllowed(templ.Handler(pages.Error(405), templ.WithStatus(http.StatusNotFound)).ServeHTTP)
