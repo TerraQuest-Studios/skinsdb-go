@@ -1,1 +1,1 @@
-dev: templ generate && go run .
+dev: export SKINSDB_DATA_PATH="/home/gozone/skinsdbdata" SKINSDB_PORT="3420" && templ generate && go run .

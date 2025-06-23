@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/a-h/templ"
@@ -76,5 +77,11 @@ func main() {
 		w.Header().Set("Content-Type", "application/json")
 		w.Write([]byte(response))
 	})
-	http.ListenAndServe(":3420", r)
+
+	port := "8080"
+	if os.Getenv("SKINSDB_PORT") != "" {
+		port = os.Getenv("SKINSDB_PORT")
+	}
+
+	http.ListenAndServe(":"+port, r)
 }

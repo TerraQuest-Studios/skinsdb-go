@@ -23,7 +23,7 @@ type SkinData struct {
 //this exists as an abstraction layer over file system so it can be replaced with a database later
 
 // TODO: replace this with env variable or config file
-var skinsDbDataPath = "/home/gozone/skinsdbdata"
+var skinsDbDataPath = os.Getenv("SKINSDB_DATA_PATH")
 
 func bytesToLines(data []byte) []string {
 	rawLines := bytes.Split(data, []byte("\n"))
